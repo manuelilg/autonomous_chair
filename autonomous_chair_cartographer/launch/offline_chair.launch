@@ -1,0 +1,21 @@
+<launch>
+    <arg name="bag_filenames"/>
+    <arg name="no_rviz" default="true"/>
+    <param name="/use_sim_time" value="true"/>
+
+    <group unless="$(arg no_rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" required="true"
+              args="-d $(find autonomous_chair_description)/config/description_with_map.rviz"/>
+        <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+            type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+    </group>
+
+    <node name="cartographer_offline_node" pkg="cartographer_ros"
+          required="$(arg no_rviz)"
+          type="cartographer_offline_node" args="
+              -configuration_directory $(find autonomous_chair_cartographer)/configuration_files
+              -configuration_basenames chair.lua
+              -bag_filenames $(arg bag_filenames)"
+          output="screen">
+      </node>
+</launch>

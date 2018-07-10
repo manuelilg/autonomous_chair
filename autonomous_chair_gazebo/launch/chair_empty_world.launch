@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="false"/>
+    </include>
+
+    <include file="$(find autonomous_chair_description)/launch/desctiption.launch"/>
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -model chair -z 0.15 -param robot_description"/>
+
+</launch>
