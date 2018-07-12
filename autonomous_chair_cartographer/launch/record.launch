@@ -1,3 +1,4 @@
 <launch>
-    <node name="ros_bag" pkg="rosbag" type="record" args="/clock /odom /scan --lz4"/>
+    <arg name="bag_dir" default="$(find autonomous_chair_cartographer)/bag-files/"/>
+    <node name="ros_bag" pkg="rosbag" type="record" args="-o $(arg bag_dir) /clock /odom /scan --lz4"/>
 </launch>
