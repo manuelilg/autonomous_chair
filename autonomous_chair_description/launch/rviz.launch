@@ -1,3 +1,4 @@
 <launch>
+    <include file="$(find autonomous_chair_description)/launch/description.launch"/>
     <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find autonomous_chair_description)/config/chair.rviz"/>
 </launch>

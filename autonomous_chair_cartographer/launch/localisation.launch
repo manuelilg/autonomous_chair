@@ -3,6 +3,8 @@
     <arg name="map_file" default="some_map.yaml"/>
     <arg name="initial_pose" default="translation={0.0, 0.0, 0.0},rotation={0.0,0.0,0.0}"/>
 
+    <include file="$(find autonomous_chair_description)/launch/description.launch"/>
+
     <node name="cartographer_node" pkg="cartographer_ros"
         type="cartographer_node" args="
           -configuration_directory $(find autonomous_chair_cartographer)/configuration_files

@@ -1,9 +1,12 @@
 <launch>
+    <arg name="world_name" default="worlds/willowgarage.world"/>
+
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="false"/>
+        <arg name="world_name" value="$(arg world_name)"/>
     </include>
 
-    <include file="$(find autonomous_chair_description)/launch/desctiption.launch"/>
+    <include file="$(find autonomous_chair_description)/launch/description.launch"/>
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
           args="-urdf -model chair -z 0.15 -param robot_description"/>
 
