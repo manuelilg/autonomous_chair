@@ -50,10 +50,10 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
-  <run_depend>autonomous_chair_description</run_depend>
-  <run_depend>gazebo_ros</run_depend>
-  <run_depend>turtlebot_teleop</run_depend>
-  <run_depend>joy</run_depend>
+  <exec_depend>autonomous_chair_description</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>turtlebot_teleop</exec_depend>
+  <exec_depend>joy</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

@@ -50,11 +50,11 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
-  <run_depend>autonomous_chair_description</run_depend>
+  <exec_depend>autonomous_chair_description</exec_depend>
 
-  <run_depend>cartographer_ros</run_depend>
-  <run_depend>rviz</run_depend>
-  <run_depend>rosbag</run_depend>
+  <exec_depend>cartographer_ros</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>rosbag</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
