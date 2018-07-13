@@ -1,9 +1,9 @@
 <launch>
     <arg name="pbstream_file" default="some_pbstream.pbstream"/>
     <arg name="map_file" default="some_map.yaml"/>
-    <arg name="initial_pose" default="translation={0.0, 0.0, 0.0},rotation={0.0,0.0,0.0}"/>
+    <!--<arg name="initial_pose" default="translation={0.0,0.0,0.0},rotation={0.0,0.0,0.0}"/>-->
 
-    <include file="$(find autonomous_chair_description)/launch/description.launch"/>
+    <!--<include file="$(find autonomous_chair_description)/launch/description.launch"/>-->
 
     <node name="cartographer_node" pkg="cartographer_ros"
         type="cartographer_node" args="
@@ -15,10 +15,10 @@
     </node>
 
     <node name="cartographer_start_trajectory" pkg="cartographer_ros" type="cartographer_start_trajectory"
-          args="-configuration_directory $(find cartographer_turtlebot)/configuration_files
-                -configuration_basename $(arg configuration_basename)
-                -initial_pose='{ to_trajectory_id=0, relative_pose={translation={3.0, 0.0, 0.0},rotation={0.0,0.0,1.570796} }}'"
+          args="-configuration_directory $(find autonomous_chair_cartographer)/configuration_files
+                -configuration_basename chair_localisation.lua"
           output="screen">
     </node>
+                <!-- -initial_pose='{ to_trajectory_id=0, relative_pose={translation={0.0,0.0,0.0},rotation={0.0,0.0,0.0} }}'"-->
 
 </launch>

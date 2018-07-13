@@ -3,11 +3,11 @@
     <arg name="no_rviz" default="true"/>
     <param name="/use_sim_time" value="true"/>
 
-    <include file="$(find autonomous_chair_description)/launch/description.launch"/>
+    <!--<include file="$(find autonomous_chair_description)/launch/description.launch"/>-->
 
     <group unless="$(arg no_rviz)">
         <node name="rviz" pkg="rviz" type="rviz" required="true"
-              args="-d $(find autonomous_chair_description)/config/description_with_map.rviz"/>
+              args="-d $(find autonomous_chair_description)/config/chair_with_map.rviz"/>
         <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
             type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
     </group>
