@@ -15,7 +15,7 @@ The autonomous_chair package has been tested under [ROS] Kinetic and Ubuntu 16.0
 
 To install all packages from the this repository as Debian packages use
 
-    sudo apt-get install ros-indigo-...
+    sudo apt-get install ros-kinetic-...
 
 ### Building from Source
 
