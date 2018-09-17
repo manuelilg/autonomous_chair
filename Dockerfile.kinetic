@@ -1,0 +1,26 @@
+FROM cartographer_ros:kinetic
+
+RUN apt-get update && \
+    apt-get install python-catkin-tools less nano bash-completion -y && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p catkin_ws/src && cd catkin_ws && catkin init
+WORKDIR catkin_ws/src
+
+# This file's content changes whenever master changes. See:
+# http://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
+ADD https://api.github.com/repos/manuelilg/autonomous_chair/git/refs/heads/master /tmp/git-json/autonomous_chair_version.json
+RUN git clone https://github.com/manuelilg/autonomous_chair.git
+
+WORKDIR ../
+RUN apt-get update && \
+    rm -r src/autonomous_chair/autonomous_chair_gazebo &&  \
+    rosdep update && \
+    rosdep install --from-paths src --ignore-src -y --skip-keys "autonomous_chair autonomous_chair_gazebo"  && \
+    . /opt/cartographer_ros/setup.sh && \
+    catkin build
+
+WORKDIR /
+
+
+
