@@ -1,6 +1,7 @@
 <launch>
     <arg name="pbstream_file" default="some_pbstream.pbstream"/>
     <arg name="map_file" default="some_map.yaml"/>
+    <arg name="configuration_file" default="chair_localisation_without_odom.lua"/>
     <!--<arg name="initial_pose" default="translation={0.0,0.0,0.0},rotation={0.0,0.0,0.0}"/>-->
 
     <!--<include file="$(find autonomous_chair_description)/launch/description.launch"/>-->
@@ -8,17 +9,20 @@
     <node name="cartographer_node" pkg="cartographer_ros"
         type="cartographer_node" args="
           -configuration_directory $(find autonomous_chair_cartographer)/configuration_files
-          -configuration_basename chair_localisation.lua
-          -load_state_filename $(arg pbstream_file)
-          -start_trajectory_with_default_topics=false"
+          -configuration_basename $(arg configuration_file)
+          -load_state_filename $(arg pbstream_file)"
         output="screen">
     </node>
 
-    <node name="cartographer_start_trajectory" pkg="cartographer_ros" type="cartographer_start_trajectory"
+<!--          -start_trajectory_with_default_topics=false" -->
+
+<!--    <node name="cartographer_start_trajectory" pkg="cartographer_ros" type="cartographer_start_trajectory"
           args="-configuration_directory $(find autonomous_chair_cartographer)/configuration_files
-                -configuration_basename chair_localisation.lua"
+                -configuration_basename $(arg configuration_file)"
           output="screen">
-    </node>
+    </node> -->
                 <!-- -initial_pose='{ to_trajectory_id=0, relative_pose={translation={0.0,0.0,0.0},rotation={0.0,0.0,0.0} }}'"-->
+
+   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
 
 </launch>
